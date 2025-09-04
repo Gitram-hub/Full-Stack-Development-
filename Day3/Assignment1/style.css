@@ -1,0 +1,89 @@
+.main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 300px 200px 300px;
+    gap: 20px; /* Optional: space between grid items */
+}
+
+.header {
+    background-image: url(https://images-eu.ssl-images-amazon.com/images/G/31/prime/Retention/JUP_25_Teaser/Jupiter25_H1_Prime_PC_REt_winback._CB801771297_.jpg);
+     background-size: ;
+    background-repeat: no-repeat; 
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 24px;
+}
+
+.child11 {
+    background-color: lightblue;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.child11 h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.child10 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.c11, .c12, .c13, .c14 {
+    height: 90px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    border-radius: 20px;
+}
+
+.c11 { background-image: url(https://m.media-amazon.com/images/I/61grsE2rE4L._AC_SY220_.jpg); }
+.c12 { background-image: url(https://m.media-amazon.com/images/I/41Xg3Lwfi3L._AC_SY220_.jpg); }
+.c13 { background-image: url(https://m.media-amazon.com/images/I/61n+koKZTZL._AC_SY220_.jpg); }
+.c14 { background-image: url(https://m.media-amazon.com/images/I/514My746aFL._AC_SY220_.jpg); }
+
+.child2, .child3, .child4, .child5 {
+   
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 16px;
+    box-sizing: border-box;
+}
+.child2 { background-color: lightgreen; }
+.child3 { background-color: lightcoral; }
+.child4 { background-color: lightgoldenrodyellow; }
+.child5 { background-color: lightgray; }
+
+.c21, .c22, .c23, .c24 {
+    height: 90px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    
+}
+
+.c21 { background-image: url(	https://m.media-amazon.com/images/I/41wDHNWqqmL._AC_SY290_.jpg); }
+.c22 { background-image: url(	https://m.media-amazon.com/images/I/61CK00kuV5L._AC_SY290_.jpg); }
+.c23 { background-image: url(https://m.media-amazon.com/images/I/61ddu0Q1QsL._AC_SY290_.jpg); }
+.c24 { background-image: url(https://m.media-amazon.com/images/I/51uu92d0GyL._AC_SY290_.jpg); }
