@@ -1,0 +1,12 @@
+.main{
+    border: 2px solid black;
+    width: 30vw;
+   
+    background-color: rgb(247, 187, 96);
+    margin-right: 45vw;
+    justify-items: center;
+   
+}
+.img{
+    border: 2px solid red;
+}
