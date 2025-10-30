@@ -6,6 +6,7 @@ import Gallery from './component/Gallery'
 import Icard from './component/Icard'
 import Book from './component/Book'
 import StateHandel from './component/StateHandel'
+import ImageManupulation from './component/ImageManupulation'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -41,8 +42,9 @@ function App() {
 ];
   return (
     <>
-      <StateHandel/>
-      {/* <Book books={books}/> */}
+     <ImageManupulation/>
+      {/* <StateHandel/> */}
+      <Book books={books}/>
 {/*   
      <Icard name="Ram" branch="CSE" college="ABES engineering college" age='19' location="Ghaziabad "/> */}
     </>
