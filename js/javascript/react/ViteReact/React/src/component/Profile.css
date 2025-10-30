@@ -10,3 +10,19 @@
 .img{
     border: 2px solid red;
 }
+.books{
+    background-color: rgb(165, 211, 233);
+    height: 50vh;
+    display: flex;
+    gap: 20px;
+
+}
+.imgbook img{
+    object-fit: contain;
+    height: 20vh;
+    width:20vw;
+    margin-left: 0%;
+}
+.inner{
+    border: 2px solid black ;
+}
