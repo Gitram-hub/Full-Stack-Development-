@@ -1,29 +1,32 @@
-import { useEffect, useState } from "react"
-import "./App.css"
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import './App.css'
+import MainLayout from './component/MainLayout'
+import Login from './component/Login'
+import Registration from './component/Registration'
+import Dashboard from './component/Dashboard'
 
 function App() {
-  const [data, setData] = useState([])
-
-  async function getdata() {
-    try {
-      const response = await fetch("http://localhost:4005/msg")
-      const res = await response.json()
-      console.log(res)
-      setData(res)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  useEffect(() => {
-    getdata()
-  }, [])
+const[logData,setlogData]=useState(); 
 
   return (
     <>
-      <h1>Messages</h1>
-      {}
-      {JSON.stringify(data)}
+      {/* <h2>Welcome to React Routing</h2> */}
+
+      <BrowserRouter>
+      <Routes>
+    <Route path='/' element={<MainLayout />}></Route>
+    <Route path='/login' element={<Login loginData={logData} />} />
+    <Route path='/register' element={<Registration regData={setlogData} />} />
+    <Route path='/dashboard' element={<Dashboard />} />
+
+      </Routes>
+     
+
+      </BrowserRouter>
+      {/* <h2>{JSON.stringify(logData)}</h2> */}
     </>
   )
 }

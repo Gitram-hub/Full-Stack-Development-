@@ -1,1 +1,0 @@
-import {sum,multiply} from './logic.js'
