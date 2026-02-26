@@ -5,9 +5,11 @@ function Registration() {
   const [name,setName]=useState("")
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
+  const [loading,setLoading]=useState(false)
 
   async function handleSubmit(e){
     e.preventDefault()
+    setLoading(true)
 
     const data={name,email,password}
 
@@ -19,41 +21,65 @@ function Registration() {
 
     const jsonres=await response.json()
     alert(jsonres.msg)
+    setLoading(false)
   }
 
   return (
-    <div>
-      <h2>Registration Form</h2>
+    <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="card shadow-lg p-4 rounded-4" style={{width:"400px"}}>
+        
+        <h3 className="text-center mb-4 text-primary">Create Account</h3>
 
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input type="text" 
-            onChange={(e)=>setName(e.target.value)} 
-            className="form-control" 
-            id="name" />
-        </div>
+        <form onSubmit={handleSubmit}>
 
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input type="email" 
-            onChange={(e)=>setEmail(e.target.value)} 
-            className="form-control" 
-            id="email" />
-        </div>
+          <div className="mb-3">
+            <label className="form-label">Full Name</label>
+            <input 
+              type="text"
+              value={name}
+              onChange={(e)=>setName(e.target.value)}
+              className="form-control form-control-lg"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input type="password" 
-            onChange={(e)=>setPassword(e.target.value)} 
-            className="form-control" 
-            id="password" />
-        </div>
+          <div className="mb-3">
+            <label className="form-label">Email address</label>
+            <input 
+              type="email"
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
+              className="form-control form-control-lg"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
 
-        <button type="submit" className="btn btn-primary">
-          Register
-        </button>
-      </form>
+          <div className="mb-4">
+            <label className="form-label">Password</label>
+            <input 
+              type="password"
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
+              className="form-control form-control-lg"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          <div className="d-grid">
+            <button 
+              type="submit" 
+              className="btn btn-primary btn-lg"
+              disabled={loading}
+            >
+              {loading ? "Registering..." : "Register"}
+            </button>
+          </div>
+
+        </form>
+      </div>
     </div>
   )
 }

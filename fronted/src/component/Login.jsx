@@ -1,47 +1,81 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
- import 'bootstrap/dist/css/bootstrap.min.css';
-function Login({loginData}) {
-  const[email,setEmail]=useState();
-  const[password,setPassword]=useState();
-  const navigate=useNavigate()
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-  function verification(e){
-    e.preventDefault();
-    if(loginData.email===email){
-      if(loginData.password===password){
-          navigate('/dashboard')
+function Login() {
+
+  const [email,setEmail]=useState("")
+  const [password,setPassword]=useState("")
+ 
+
+  async function verification(e){
+    e.preventDefault()
+
+    try{
+      const response = await fetch('http://localhost:4002/login',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email,password})
+      })
+
+      const data = await response.json()
+
+      if(response.ok){
+        if(data.msg=="Login successfully")
+        {   
+            const navigate=useNavigate();
+            alert(data.msg || "Login Success")
+            navigate('/dashboard')
+
+        }
+        
+  
+      
       }else{
-        alert("Password is not correct");
+        alert(data.msg || "Invalid login")
       }
 
-    }else{
-      alert("Email is not registered");
+    }catch(err){
+      alert("Server error")
     }
-    //alert("Hii"+email+password);
-    // console.log(loginData);
   }
+
   return (
-    <div>
-        <h2>Login Form</h2>
-        <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" onChange={(e)=>setEmail(e.target.value)} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" onChange={(e)=>setPassword(e.target.value)} class="form-control" id="exampleInputPassword1" />
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" onClick={verification} class="btn btn-primary">Login</button>
-</form>
+    <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="card shadow p-4" style={{width:"400px"}}>
 
+        <h3 className="text-center mb-4">Login</h3>
 
+        <form onSubmit={verification}>
+
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input
+              type="email"
+              className="form-control"
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Password</label>
+            <input
+              type="password"
+              className="form-control"
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className="btn btn-primary w-100">
+            Login
+          </button>
+
+        </form>
+      </div>
     </div>
   )
 }

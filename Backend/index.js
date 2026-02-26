@@ -96,6 +96,7 @@ const server = http.createServer(async (req, res) => {
     });
 
     req.on("end", async () => {
+
       try {
 
         if (!body) {
@@ -114,22 +115,28 @@ const server = http.createServer(async (req, res) => {
           arr = [];
         }
 
-        const status = arr.find(
-          ele => ele.email === email && ele.password === password
-        );
 
         res.setHeader('Content-Type', 'application/json');
 
-        if (status) {
-          return res.end(JSON.stringify({ msg: "Login successfully" }));
+        if (!user) {
+          return res.end(JSON.stringify({ msg: "Email not registered" }));
         }
 
-        return res.end(JSON.stringify({ msg: "Invalid email or password" }));
+        if (user.password !== password) {
+          return res.end(JSON.stringify({
+            msg: "Wrong password"
+          }));
+        }
+
+        return res.end(JSON.stringify({
+          msg: "Login successfully"
+        }));
 
       } catch (err) {
         res.setHeader('Content-Type', 'application/json');
         return res.end(JSON.stringify({ msg: "Invalid JSON format" }));
       }
+
     });
   }
 
